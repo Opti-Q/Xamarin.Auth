@@ -4,18 +4,19 @@
              x:Class="Xamarin.Auth.Forms.WebAuthenticatorPage"
              Title="{Binding Title}">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand" >
+        
         <Button x:Name="backbutton"
-            Grid.Row="0" Text="{Binding BackbuttonText}" HorizontalOptions="Start" VerticalOptions="Start" 
-            Clicked="BackButton_Click"
-            />
-        <WebView 
-                Grid.Row="1" x:Name="browser"/>
+             Text="{Binding BackbuttonText}"
+             IsVisible="{Binding AllowCancel}"
+             HorizontalOptions="Start" VerticalOptions="Start" 
+             Clicked="BackButton_Click" />
+        
+        <WebView x:Name="browser"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand" />
 
-
-    </Grid>
+    </StackLayout>
 </ContentPage>

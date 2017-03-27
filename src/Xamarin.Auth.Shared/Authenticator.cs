@@ -33,7 +33,7 @@ namespace Xamarin.Auth
 		public string Title { get; set; }
 
 	    public string BackbuttonText { get; set; } = "Back";
-
+        
 		/// <summary>
 		/// Gets or sets whether to allow user cancellation.
 		/// </summary>

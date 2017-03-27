@@ -35,12 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\Key.cs">
+      <Link>Key.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +58,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Xamarin.Auth.Core\Xamarin.Auth.Core.csproj">
+      <Project>{A2955BB4-7789-472E-84D8-A82FAD1FBCA5}</Project>
+      <Name>Xamarin.Auth.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\Xamarin.Auth.Forms\Xamarin.Auth.Forms.csproj">
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
       <Name>Xamarin.Auth.Forms</Name>

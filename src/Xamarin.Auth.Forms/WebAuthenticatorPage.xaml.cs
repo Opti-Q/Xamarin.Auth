@@ -31,8 +31,6 @@ namespace Xamarin.Auth.Forms
 
             Uri uri = await _auth.GetInitialUrlAsync();
             this.browser.Source = uri;
-            
-
             this.browser.Navigating += Browser_Navigating;
             this.browser.Navigated += Browser_Navigated;
 
@@ -81,7 +79,14 @@ namespace Xamarin.Auth.Forms
         {
             try
             {
-                await this.Navigation.PopAsync();
+                if (Navigation.ModalStack.LastOrDefault() == this)
+                {
+                    await this.Navigation.PopModalAsync();
+                }
+                else if (Navigation.NavigationStack.LastOrDefault() == this)
+                {
+                    await this.Navigation.PopAsync();
+                }
             }
             catch (Exception x)
             {

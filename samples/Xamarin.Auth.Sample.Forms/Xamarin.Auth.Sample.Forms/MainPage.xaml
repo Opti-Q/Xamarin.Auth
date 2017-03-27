@@ -3,9 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin.Auth.Sample.Forms"
              x:Class="Xamarin.Auth.Sample.Forms.MainPage">
+    <ContentPage.BindingContext>
+        <local:MainViewModel></local:MainViewModel>
+    </ContentPage.BindingContext>
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout>
+	    <Label Text="Welcome to Xamarin Forms!" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+        
+        <Button Text="Login" Command="{Binding LoginCommand}"></Button>
+        
+        <Label Text="Login result:" />
+        <Label Text="{Binding LoginResult}" />
+    </StackLayout>
 
 </ContentPage>
