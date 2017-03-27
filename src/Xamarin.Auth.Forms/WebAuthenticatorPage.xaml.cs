@@ -38,7 +38,7 @@ namespace Xamarin.Auth.Forms
 
             if (_auth.ClearCookiesBeforeLogin)
             {
-                
+                await Platform.Engine.ClearCookiesAsync();
             }
 
             base.OnAppearing();

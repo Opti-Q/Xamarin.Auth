@@ -105,11 +105,13 @@ namespace Xamarin.Auth
 			else {
                 if (Intent.GetBooleanExtra("ClearCookies", true))
                 {
-                    CookieSyncManager.CreateInstance(Application.Context);
-                    CookieManager.Instance.RemoveAllCookie();
+                    Platform.Engine.ClearCookiesAsync().ContinueWith(t => BeginLoadingInitialUrl());
+                }
+                else
+                {
+                    BeginLoadingInitialUrl();
                 }
 
-				BeginLoadingInitialUrl ();
 			}
 		}
 

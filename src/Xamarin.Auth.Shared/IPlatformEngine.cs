@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Xamarin.Auth
@@ -11,5 +8,6 @@ namespace Xamarin.Auth
         IAccountStore Create(char[] password = null);
         Task InvokeOnMainThread(Action action);
         IDisposable Disable100();
+        Task ClearCookiesAsync();
     }
 }

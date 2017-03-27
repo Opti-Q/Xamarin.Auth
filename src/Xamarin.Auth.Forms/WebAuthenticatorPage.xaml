@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Xamarin.Auth.Forms.WebAuthenticatorPage">
+             x:Class="Xamarin.Auth.Forms.WebAuthenticatorPage"
+             Title="{Binding Title}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -9,7 +10,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Button x:Name="backbutton"
-            Grid.Row="0" Text="Back" HorizontalOptions="Start" VerticalOptions="Start" 
+            Grid.Row="0" Text="{Binding BackbuttonText}" HorizontalOptions="Start" VerticalOptions="Start" 
             Clicked="BackButton_Click"
             />
         <WebView 

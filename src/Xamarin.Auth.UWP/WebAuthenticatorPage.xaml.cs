@@ -36,10 +36,10 @@ namespace Xamarin.Auth
 
             if (_auth.ClearCookiesBeforeLogin)
             {
-                await Windows.UI.Xaml.Controls.WebView.ClearTemporaryWebDataAsync();
+                await Platform.Engine.ClearCookiesAsync();
             }
 
-            base.OnNavigatedTo(e);
+           base.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

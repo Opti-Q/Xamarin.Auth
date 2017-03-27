@@ -1,23 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 #if PLATFORM_ANDROID
 using Android.OS;
+using Android.App;
+using Android.Webkit;
 #elif WINDOWS_UWP
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 #elif PLATFORM_IOS
+using Foundation;
 using UIKit;
 #endif
 
 namespace Xamarin.Auth
 {
-    internal class Platform : IPlatformEngine
+    public class Platform : IPlatformEngine
     {
-        internal static IPlatformEngine Engine = new Platform();
+        public static IPlatformEngine Engine = new Platform();
 
 #if PLATFORM_ANDROID
         public IAccountStore Create(char[] password = null)
@@ -35,6 +34,13 @@ namespace Xamarin.Auth
         public IDisposable Disable100()
         {
             return new ServicePointManagerDispabler();
+        }
+
+        public Task ClearCookiesAsync()
+        {
+            CookieSyncManager.CreateInstance(Application.Context);
+            CookieManager.Instance.RemoveAllCookie();
+            return Task.FromResult(true);
         }
 #elif PLATFORM_IOS
         public IAccountStore Create(char[] password = null)
@@ -54,6 +60,17 @@ namespace Xamarin.Auth
         {
             return new ServicePointManagerDispabler();
         }
+        
+        public Task ClearCookiesAsync()
+        {
+            var store = NSHttpCookieStorage.SharedStorage;
+            var cookies = store.Cookies;
+            foreach (var c in cookies)
+            {
+                store.DeleteCookie(c);
+            }
+            return Task.FromResult(true);
+        }
 
 #elif WINDOWS_UWP
         public IAccountStore Create(char[] password = null)
@@ -70,6 +87,11 @@ namespace Xamarin.Auth
         {
             return new ServicePointManagerDispabler();
         }
+
+        public async Task ClearCookiesAsync()
+        {
+            await Windows.UI.Xaml.Controls.WebView.ClearTemporaryWebDataAsync();
+        }
 #else
         public IAccountStore Create(char[] password = null)
         {
@@ -82,6 +104,10 @@ namespace Xamarin.Auth
         }
 
         public IDisposable Disable100()
+        {
+            throw new NotImplementedException();
+        }
+        public Task ClearCookiesAsync()
         {
             throw new NotImplementedException();
         }
