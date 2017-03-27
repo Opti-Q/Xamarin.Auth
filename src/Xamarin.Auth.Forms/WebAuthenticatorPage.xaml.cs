@@ -44,9 +44,17 @@ namespace Xamarin.Auth.Forms
 
         protected override void OnDisappearing()
         {
-            _auth.Completed -= OnAuthCompleted;
-            _auth.Error -= OnAuthError;
+            if (_auth != null)
+            {
+                _auth.Completed -= OnAuthCompleted;
+                _auth.Error -= OnAuthError;
+            }
 
+            if (this.browser != null)
+            {
+                this.browser.Navigating -= Browser_Navigating;
+                this.browser.Navigated -= Browser_Navigated;
+            }
             base.OnDisappearing();
         }
 
