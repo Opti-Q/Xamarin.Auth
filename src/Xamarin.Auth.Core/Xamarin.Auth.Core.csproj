@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PCL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -32,7 +32,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;PCL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -42,33 +42,7 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="AccountStore.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Authenticator.cs" />
-    <Compile Include="AuthException.cs" />
-    <Compile Include="ExceptionEx.cs" />
-    <Compile Include="FormAuthenticator.cs" />
-    <Compile Include="IAccountStore.cs" />
-    <Compile Include="IPlatformEngine.cs" />
-    <Compile Include="OAuth2Authenticator.cs" />
-    <Compile Include="OAuth2Request.cs" />
-    <Compile Include="PlatformAccountStoreAttribute.cs" />
-    <Compile Include="PlatformEngine.cs" />
-    <Compile Include="Request.cs" />
-    <Compile Include="Response.cs" />
-    <Compile Include="System.Json\JavaScriptReader.cs" />
-    <Compile Include="System.Json\JsonArray.cs" />
-    <Compile Include="System.Json\JsonObject.cs" />
-    <Compile Include="System.Json\JsonPrimitive.cs" />
-    <Compile Include="System.Json\JsonType.cs" />
-    <Compile Include="System.Json\JsonValue.cs" />
-    <Compile Include="WebAuthenticator.cs" />
-    <Compile Include="WebEx.cs" />
-    <Compile Include="WebRedirectAuthenticator.cs" />
-    <Compile Include="WebUtilities.cs" />
-  </ItemGroup>
+  <Import Project="..\Xamarin.Auth.Shared\Xamarin.Auth.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,7 +9,32 @@
     <Import_RootNamespace>Xamarin.Auth.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Account.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AccountStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Authenticator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AuthenticatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AuthException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExceptionEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormAuthenticator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IAccountStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IPlatformEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAuth2Authenticator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAuth2Request.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlatformAccountStoreAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlatformEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Request.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Response.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServicePointManagerDispabler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)System.Json\JavaScriptReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)System.Json\JsonArray.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)System.Json\JsonObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)System.Json\JsonPrimitive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)System.Json\JsonType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)System.Json\JsonValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebAuthenticator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebRedirectAuthenticator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebUtilities.cs" />
   </ItemGroup>
 </Project>

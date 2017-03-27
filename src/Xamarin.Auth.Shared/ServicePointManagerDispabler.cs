@@ -9,7 +9,7 @@ namespace Xamarin.Auth
 
         public ServicePointManagerDispabler()
         {
-#if !WINDOWS_UWP
+#if !WINDOWS_UWP && !XAMARIN_FORMS && !PCL
             _prevValue = ServicePointManager.Expect100Continue;
             ServicePointManager.Expect100Continue = false;
 #endif
@@ -17,7 +17,7 @@ namespace Xamarin.Auth
 
         public void Dispose()
         {
-#if !WINDOWS_UWP
+#if !WINDOWS_UWP && !XAMARIN_FORMS && !PCL
             ServicePointManager.Expect100Continue = _prevValue;
 #endif
         }

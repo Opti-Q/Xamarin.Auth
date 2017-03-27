@@ -17,7 +17,8 @@ using AuthenticateUIType = Android.Content.Intent;
 using UIContext = Android.Content.Context;
 #elif WINDOWS_UWP
 using AuthenticateUIType = System.Type;
-
+#elif XAMARIN_FORMS
+using Xamarin.Auth.Forms;
 #else
 using AuthenticateUIType = System.Object;
 #endif
@@ -92,6 +93,25 @@ namespace Xamarin.Auth
             if (fa != null)
             {
                 throw new NotSupportedException("FormsAuthenticator is not yet supported on UWP platform");
+            }
+
+            throw new NotSupportedException("No UI is defined for this authenticator type");
+        }
+#elif XAMARIN_FORMS
+        public static Xamarin.Forms.Page GetUI (this Authenticator authenticator)
+		{
+            var wa = authenticator as WebAuthenticator;
+            if(wa != null)
+            {
+                var page = new WebAuthenticatorPage();
+                page.BindingContext = authenticator;
+                return page;
+            }
+            
+            var fa = authenticator as FormAuthenticator;
+            if (fa != null)
+            {
+                throw new NotSupportedException("FormsAuthenticator is not yet supported on Xamarin.Forms platform");
             }
 
             throw new NotSupportedException("No UI is defined for this authenticator type");

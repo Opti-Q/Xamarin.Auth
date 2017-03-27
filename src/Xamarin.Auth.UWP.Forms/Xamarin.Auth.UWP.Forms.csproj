@@ -4,15 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BF64CD62-A381-48BF-9AA8-804CEECF0FFB}</ProjectGuid>
+    <ProjectGuid>{982760F1-797D-426A-B9F6-81FC7C6A4E6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xamarin.Auth</RootNamespace>
-    <AssemblyName>Xamarin.Auth</AssemblyName>
+    <RootNamespace>Xamarin.Auth.UWP.Forms</RootNamespace>
+    <AssemblyName>Xamarin.Auth.UWP.Forms</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -107,20 +107,20 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataProtectionExtensions.cs" />
-    <Compile Include="WebAuthenticatorPage.xaml.cs">
-      <DependentUpon>WebAuthenticatorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UwpAccountStore.cs" />
-    <EmbeddedResource Include="Properties\Xamarin.Auth.UWP.rd.xml" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Xamarin.Auth.UWP.Forms.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="WebAuthenticatorPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <ProjectReference Include="..\Xamarin.Auth.Forms\Xamarin.Auth.Forms.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>Xamarin.Auth.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xamarin.Auth.UWP\Xamarin.Auth.UWP.csproj">
+      <Project>{bf64cd62-a381-48bf-9aa8-804ceecf0ffb}</Project>
+      <Name>Xamarin.Auth.UWP</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Xamarin.Auth.Shared\Xamarin.Auth.Shared.projitems" Label="Shared" />
+  <Import Project="..\Xamarin.Auth.Forms.Shared\Xamarin.Auth.Forms.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
