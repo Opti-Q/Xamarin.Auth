@@ -17,5 +17,8 @@
     </metadata>
     <files>
         <file src="..\src\Xamarin.Auth.Forms\bin\Release\Xamarin.Auth.Forms.dll" target="lib\portable45-net45+win8+wpa81\Xamarin.Auth.Forms.dll" />
+        <file src="..\src\Xamarin.Auth.Forms\bin\Release\Xamarin.Auth.dll" target="lib\MonoAndroid\Xamarin.Auth.Forms.dll" />
+        <file src="..\src\Xamarin.Auth.Forms\bin\Release\Xamarin.Auth.dll" target="lib\Xamarin.iOS\Xamarin.Auth.Forms.dll" />
+        <file src="..\src\Xamarin.Auth.Forms\bin\Release\Xamarin.Auth.dll" target="lib\wpa81\Xamarin.Auth.Forms.dll" />
     </files>
 </package>
