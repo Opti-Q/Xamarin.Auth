@@ -16,3 +16,7 @@ test-results
 *.nupkg
 /samples/Xamarin.Auth.Sample.iOS/packages/*
 /samples/packages
+/src/Xamarin.Auth.Android/.vs/Xamarin.Auth.Android/v15/Server/sqlite3
+/src/Xamarin.Auth.Android/packages
+/.vs
+/src/.vs/Xamarin.Auth/v15/Server/sqlite3

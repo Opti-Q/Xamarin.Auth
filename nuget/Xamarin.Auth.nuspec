@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Xamarin.Auth</id>
-        <version>2.0.0.5</version>
-        <title>Xamarin.Auth</title>
+        <version>2.0.0.6</version>
+        <title>Xamarin.Auth OPTI-Q</title>
         <authors>Xamarin Inc.</authors>
         <owners>Xamarin Inc.</owners>
         <projectUrl>https://github.com/xamarin/Xamarin.Auth</projectUrl>
@@ -11,7 +11,6 @@
         <description>Cross platform authentication library</description>
         <summary>Cross platform authentication library</summary>
         <dependencies>
-            <dependency id="SharpSerializer" version="3.0.1" />
         </dependencies>
     </metadata>
     <files>
