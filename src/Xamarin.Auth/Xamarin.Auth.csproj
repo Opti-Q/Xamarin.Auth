@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299</TargetFrameworks>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Version>1.0.1</Version>
+    <Version>2.0.1.0</Version>
     <Authors>amarek</Authors>
     <Company>Opti-Q GmbH</Company>
     <PackageReleaseNotes>iOS support</PackageReleaseNotes>

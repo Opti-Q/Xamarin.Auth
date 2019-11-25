@@ -20,3 +20,4 @@ test-results
 /src/Xamarin.Auth.Android/packages
 /.vs
 /src/.vs/Xamarin.Auth/v15/Server/sqlite3
+/src/.vs/Xamarin.Auth
