@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299</TargetFrameworks>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Version>2.0.1.0</Version>
+    <Version>2.0.1.1</Version>
     <Authors>amarek</Authors>
     <Company>Opti-Q GmbH</Company>
-    <PackageReleaseNotes>iOS support</PackageReleaseNotes>
+    <PackageReleaseNotes>netstandard support</PackageReleaseNotes>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
@@ -19,10 +19,17 @@
   <ItemGroup>
     <Compile Remove="Platforms\**\*.cs" />
     <None Include="Platforms\**\*.cs" />
+    <None Include="Platforms\**\*.xaml" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
     <Compile Include="Platforms\UniversalWindows\**\*.cs" />
+    <Page Include="Platforms\UniversalWindows\WebAuthenticatorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Update="Platforms\UniversalWindows\WebAuthenticatorPage.xaml.cs">
+      <DependentUpon>Platforms\UniversalWindows\WebAuthenticatorPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
@@ -35,19 +42,8 @@
 
   <ItemGroup>
     <None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Include="Platforms\UniversalWindows\WebAuthenticatorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Platforms\UniversalWindows\WebAuthenticatorPage.xaml.cs">
-      <DependentUpon>WebAuthenticatorPage.xaml</DependentUpon>
-    </Compile>
+    <None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml" />
+    <None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml.cs" />
   </ItemGroup>
 
 
