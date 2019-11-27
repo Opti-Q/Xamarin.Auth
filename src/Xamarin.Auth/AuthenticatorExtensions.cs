@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-#if PLATFORM_IOS
-#if __UNIFIED__
+#if XAMARIN_IOS
+#if __IOS__
 using Foundation;
 using UIKit;
 using AuthenticateUIType = UIKit.UIViewController;
@@ -12,7 +12,7 @@ using MonoTouch.UIKit;
 using MonoTouch.Foundation;
 using AuthenticateUIType = MonoTouch.UIKit.UIViewController;
 #endif
-#elif PLATFORM_ANDROID
+#elif MONOANDROID
 using AuthenticateUIType = Android.Content.Intent;
 using UIContext = Android.Content.Context;
 #elif WINDOWS_UWP
@@ -34,7 +34,7 @@ namespace Xamarin.Auth
         /// <returns>
         /// The UI that needs to be presented.
         /// </returns>
-#if PLATFORM_IOS
+#if XAMARIN_IOS
 		public static AuthenticateUIType GetUI (this Authenticator authenticator)
 		{
             var wa = authenticator as WebAuthenticator;
@@ -51,7 +51,7 @@ namespace Xamarin.Auth
         
             throw new NotSupportedException("No UI is defined for this authenticator type");
         }
-#elif PLATFORM_ANDROID
+#elif MONOANDROID
         public static AuthenticateUIType GetUI(this Authenticator authenticator, UIContext context)
         {
             var wa = authenticator as WebAuthenticator;

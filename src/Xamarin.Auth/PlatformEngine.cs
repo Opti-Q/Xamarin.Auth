@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-#if PLATFORM_ANDROID
+#if MONOANDROID
 using Android.OS;
 using Android.App;
 using Android.Webkit;
 #elif WINDOWS_UWP
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
-#elif PLATFORM_IOS
+#elif XAMARIN_IOS
 using Foundation;
 using UIKit;
 #endif
@@ -18,7 +18,7 @@ namespace Xamarin.Auth
     {
         public static IPlatformEngine Engine = new Platform();
 
-#if PLATFORM_ANDROID
+#if MONOANDROID
         public IAccountStore Create(char[] password = null)
         {
             return new AndroidAccountStore(password);
@@ -42,7 +42,7 @@ namespace Xamarin.Auth
             CookieManager.Instance.RemoveAllCookie();
             return Task.FromResult(true);
         }
-#elif PLATFORM_IOS
+#elif XAMARIN_IOS
         public IAccountStore Create(char[] password = null)
         {
             return new KeyChainAccountStore(password);
