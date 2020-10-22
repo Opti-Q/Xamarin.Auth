@@ -37,19 +37,7 @@ namespace Xamarin.Auth
 #if XAMARIN_IOS
 		public static AuthenticateUIType GetUI (this Authenticator authenticator)
 		{
-            var wa = authenticator as WebAuthenticator;
-            if(wa != null)
-            {
-			    return new UINavigationController (new WebAuthenticatorController (wa));
-            }
-            
-            var fa = authenticator as FormAuthenticator;
-            if (fa != null)
-            {
-			    return new UINavigationController (new FormAuthenticatorController (fa));
-            }
-        
-            throw new NotSupportedException("No UI is defined for this authenticator type");
+            throw new NotSupportedException("No UI is defined for iOS");
         }
 #elif MONOANDROID
         public static AuthenticateUIType GetUI(this Authenticator authenticator, UIContext context)
