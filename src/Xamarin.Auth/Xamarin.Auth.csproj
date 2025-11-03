@@ -1,50 +1,77 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299</TargetFrameworks>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Version>2.0.2.0</Version>
-    <Authors>amarek</Authors>
-    <Company>Opti-Q GmbH</Company>
-    <PackageReleaseNotes>removed use of deprecated iOS UIWebView </PackageReleaseNotes>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299</TargetFrameworks>
+		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+		<Version>2.0.3.0</Version>
+		<Authors>amarek</Authors>
+		<Company>Opti-Q GmbH</Company>
+		<PackageReleaseNotes>
+			# 2.0.3.0
+			migrated from DataProtectionProvider to PasswordVault
+			# 2.0.2.0
+			removed use of deprecated iOS UIWebView
+		</PackageReleaseNotes>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="$(Configuration) == 'Release'">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <IncludeSource>True</IncludeSource>
-    <IncludeSymbols>True</IncludeSymbols>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Platforms\**\*.cs" />
-    <None Include="Platforms\**\*.cs" />
-    <None Include="Platforms\**\*.xaml" />
-  </ItemGroup>
+	<PropertyGroup Condition="$(Configuration) == 'Release'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IncludeSource>True</IncludeSource>
+		<IncludeSymbols>True</IncludeSymbols>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
-    <Compile Include="Platforms\UniversalWindows\**\*.cs" />
-    <Page Include="Platforms\UniversalWindows\WebAuthenticatorPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Update="Platforms\UniversalWindows\WebAuthenticatorPage.xaml.cs">
-      <DependentUpon>Platforms\UniversalWindows\WebAuthenticatorPage.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
+		<!-- include the .pdb files in the package. this is not recommended, but has to be done when distributing via Azure Artifacts
+      see: https://github.com/dotnet/sourcelink#alternative-pdb-distribution -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <Compile Include="Platforms\Android\**\*.cs" />
-  </ItemGroup>
+		<!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-    <Compile Include="Platforms\iOS\**\*.cs" />
-  </ItemGroup>
+		<!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-  <ItemGroup>
-    <None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml" />
-    <None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml" />
-    <None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml.cs" />
-  </ItemGroup>
+		<!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Platforms\**\*.cs" />
+		<None Include="Platforms\**\*.cs" />
+		<None Include="Platforms\**\*.xaml" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
+		<Compile Include="Platforms\UniversalWindows\**\*.cs" />
+		<Page Include="Platforms\UniversalWindows\WebAuthenticatorPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+		<Compile Update="Platforms\UniversalWindows\WebAuthenticatorPage.xaml.cs">
+			<DependentUpon>Platforms\UniversalWindows\WebAuthenticatorPage.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+		<Compile Include="Platforms\Android\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+		<Compile Include="Platforms\iOS\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml" />
+		<None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml" />
+		<None Remove="Platforms\UniversalWindows\WebAuthenticatorPage.xaml.cs" />
+	</ItemGroup>
 
 
 </Project>
